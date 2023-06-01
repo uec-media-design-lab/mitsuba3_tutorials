@@ -1,0 +1,87 @@
+<scene version="3.0.0">
+    <!-- 一度に適用するsample_count最大値 -->
+    <integrator type="path">
+        <integer name="samples_per_pass" value="256"/>
+    </integrator>
+
+    <!-- カメラ位置調整 -->
+    <sensor type="perspective">
+        <transform name="to_world">
+            <lookat origin="0, 0, 200" target="0, 0, 0" up="0, 1, 0"/>
+        </transform>
+
+        <!-- レンダリング画像の解像度 -->
+        <film type="hdrfilm">
+            <integer name="width" value="512"/>
+            <integer name="height" value="512"/>
+        </film>
+
+        <!-- サンプル数 -->
+        <sampler type="independent">
+            <integer name="sample_count" value="256"/>
+        </sampler>
+    </sensor>
+
+    <!-- 天井、床、壁 -->
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="50" y="50"/>
+            <rotate x="1" angle="90"/>
+            <translate y="50"/>
+            </transform>
+    </shape>
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="50" y="50"/>
+            <rotate x="1" angle="-90"/>
+            <translate y="-50"/>
+            </transform>
+    </shape>
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="50" y="50"/>
+            <rotate y="1" angle="90"/>
+            <translate x="-50"/>
+            </transform>
+            
+    </shape>
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="50" y="50"/>
+            <rotate y="1" angle="-90"/>
+            <translate x="50"/>
+            </transform>
+            
+    </shape>
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="50" y="50"/>
+            <translate z="-50"/>
+            </transform>
+    </shape>
+
+    <!--照明 -->
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+        </bsdf>
+        <transform name="to_world">
+            <scale x="5" y="5"/>
+            <rotate x="1" angle="90"/>
+            <translate y="49"/>
+        </transform>
+        <emitter type="area">
+            <rgb name="radiance" value="60, 50, 40"/>
+        </emitter>
+    </shape>
+    
+</scene>
